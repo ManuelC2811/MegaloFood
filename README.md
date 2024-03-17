@@ -1,7 +1,7 @@
 # MegaloFood 🍔🍟🍦
 
 **Los Megalodones 🦈**  
-**Miembros:**  
+**Miembros 🫂**  
 Alirio Hernando Martinez Barreto - Aliirio    
 Brandon Losada Socha - blosadas  
 Gabriel Felipe Fonseca Guerrero - gabok2003  

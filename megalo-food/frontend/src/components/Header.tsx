@@ -4,11 +4,11 @@ import MainNav from "./MainNav";
 
 const Header = () => {
   return (
-    <div className="border-b-2 border-b-yellow-500 py-6">
+    <div className="border-b-2 border-b-white py-6">
       <div className="container mx-auto flex justify-between items-center">
         <Link
           to="/"
-          className="text-3xl font-bold tracking-tight text-blue-500"
+          className="text-3xl font-bold tracking-tight text-black-500"
         >
           MegaloFood
         </Link>

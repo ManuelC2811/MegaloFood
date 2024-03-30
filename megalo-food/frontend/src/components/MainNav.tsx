@@ -4,7 +4,7 @@ const MainNav = () => {
   return (
     <Button
       variant="ghost"
-      className="font-bold hover:text-blue-500 hover:bg-white"
+      className="bg-orange-500 text-white rounded-full px-6 py-5"
     >
       Iniciar sesión
     </Button>

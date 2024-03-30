@@ -1,32 +1,17 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import cors from 'cors';
+import express, { Request, Response } from "express";
+import cors from "cors";
+import "dotenv/config";
+import mongoose from "mongoose";
+import myUserRoute from "./routes/MyUserRoute";
 
-const app = express(); // Crear una instancia de express
+mongoose.connect(process.env.MONGODB_CONNECTION_STRING as string).then(() => console.log("Conectado a la base de datos!"));
 
-app.use(express.json()); // Middleware para parsear el body de las peticiones
-app.use(cors()) // Middleware para permitir peticiones desde cualquier origen
+const app = express();
+app.use(express.json());
+app.use(cors());
 
-require('dotenv').config(); // Cargar las variables de entorno
+app.use("/api/my/user", myUserRoute);
 
-const MONGODB_CONNECTION_STRING = process.env.MONGODB_CONNECTION_STRING;
-
-if (!MONGODB_CONNECTION_STRING) {
-    throw new Error('MONGODB_CONNECTION_STRING is not defined in the environment variables');
-}
-
-mongoose.connect(MONGODB_CONNECTION_STRING).then(() => console.log('Base de Datos conectada exitosamente.')); // Conectar a la base de datos
-
-// mongoose.connect(process.env.MONGODB_CONNECTION_STRING as string).then(()=>console.log('Base de Datos conectada exitosamente.')); // Conectar a la base de datos
-
-app.get('/', (req, res) => {
-  res.json({ message: '¡Bienvenido a MegaloFood!' }); // Enviar un JSON como respuesta
+app.listen(7000, () => {
+    console.log("Servidor iniciado en localhost:7000")
 });
-
-const PORT = process.env.PORT || 3000; // Puerto en el que se ejecutará el servidor
-
-// Levantar el servidor en el puerto especificado
-app.listen(PORT, () => { 
-  console.log(`Server MegaloFood running in port ${PORT}`);
-});
-

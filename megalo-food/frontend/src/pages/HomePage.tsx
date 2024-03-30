@@ -16,7 +16,7 @@ const HomePage = () => {
           <span className="font-bold text-3xl tracking-tighter">
             Pide tu comida aun mas rapido!
           </span>
-          <span>Descargar nuestra SharkApp para pescar mas rapido!</span>
+          <span>Descarga MegaloFood para pescar mas rápido!</span>
           <img src={appDownloadImage} alt="Imagen de descarga de aplicación" />
         </div>
       </div>

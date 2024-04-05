@@ -1,4 +1,4 @@
-# MegaloFood 🍔🚀
+# MegaloFood 🍔🦈
 
 MegaloFood es un proyecto desarrollado para la materia de Ingeniería de Software I de la Universidad Nacional de Colombia durante el semestre 2024-1. Se centra en la creación de una página web de domicilios en línea, utilizando tecnologías modernas como React, TypeScript, JavaScript y HTML.
 

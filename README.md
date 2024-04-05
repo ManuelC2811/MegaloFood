@@ -9,6 +9,17 @@ MegaloFood es un proyecto desarrollado para la materia de Ingeniería de Softwar
 - Lenguaje de programación principal: **JavaScript** 🖥️
 - Estructura y diseño de la interfaz con **HTML** 🎨
 
+## Integrantes del proyecto
+
+- Jose Esteban Alvarado Monroy
+- Melissa Dayanna Forero Narvaez
+- Alirio Hernando Martinez Barreto
+- Maria Paula Carvajal Martinez
+- Gabriel Felipe Fonseca Guerrero
+- Manuel Nicolas Castiblanco Avendaño
+- Juan Manuel Torres Leon
+- Brandon Losada Socha
+
 ## Instalación
 
 1. Clona este repositorio en tu máquina local:

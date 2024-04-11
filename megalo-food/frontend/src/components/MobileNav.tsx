@@ -22,12 +22,12 @@ const MobileNav = () => {
       <SheetContent className="space-y-3">
         <SheetTitle>
           {isAuthenticated ? (
-            <span className="flex items-center font-bold gap-2">
-              <CircleUserRound className="text-blue-500" />
+            <span className="flex items-center font-semibold gap-2">
+              <CircleUserRound className="text-black-500" />
               {user?.email}
             </span>
           ) : (
-            <span>Bienvenido a MegaloFood</span>
+            <span className="font-raleway">Bienvenido a MegaloFood</span>
           )}
         </SheetTitle>
         <Separator />
@@ -37,7 +37,7 @@ const MobileNav = () => {
           ) : (
             <Button
               onClick={() => loginWithRedirect()}
-              className="flex-1 font-bold bg-red-500 hover:text-red-500 hover:bg-white rounded-full border border-red-500"
+              className="flex-1 font-bold font-raleway bg-red-500 hover:text-red-500 hover:bg-white rounded-full border border-red-500"
             >
               Iniciar Sesión
             </Button>

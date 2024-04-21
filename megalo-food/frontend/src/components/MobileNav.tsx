@@ -22,7 +22,7 @@ const MobileNav = () => {
       <SheetContent className="space-y-3">
         <SheetTitle>
           {isAuthenticated ? (
-            <span className="flex items-center font-semibold gap-2">
+            <span className="flex items-center font-semibold gap-2 font-raleway ">
               <CircleUserRound className="text-black-500" />
               {user?.email}
             </span>

@@ -18,25 +18,25 @@ export const validateMyUserRequest = [
 ];
 
 export const validateMyRestaurantRequest = [
-    body("restaurantName").notEmpty().withMessage("Restaurant name is required"),
-    body("city").notEmpty().withMessage("City is required"),
-    body("country").notEmpty().withMessage("Country is required"),
+    body("restaurantName").notEmpty().withMessage("El nombre del restaurante es requerido"),
+    body("city").notEmpty().withMessage("El nombre de la ciudad es requerido"),
+    body("country").notEmpty().withMessage("el nombre del país es requerido"),
     body("deliveryPrice")
       .isFloat({ min: 0 })
-      .withMessage("Delivery price must be a positive number"),
+      .withMessage("El precio del envío es requerido y debe ser un número positivo"),
     body("estimatedDeliveryTime")
       .isInt({ min: 0 })
-      .withMessage("Estimated delivery time must be a postivie integar"),
+      .withMessage("El tiempo estimado de entrega es requerido y debe ser un número entero positivo"),
     body("cuisines")
       .isArray()
-      .withMessage("Cuisines must be an array")
+      .withMessage("Platos deben ser un array")
       .not()
       .isEmpty()
-      .withMessage("Cuisines array cannot be empty"),
-    body("menuItems").isArray().withMessage("Menu items must be an array"),
-    body("menuItems..name").notEmpty().withMessage("Menu item name is required"),
+      .withMessage("El arreglo de platos no puede estar vacío"),
+    body("menuItems").isArray().withMessage("Los items del menú deben ser un array"),
+    body("menuItems..name").notEmpty().withMessage("El nombre del item del menu es requerido"),
     body("menuItems..price")
       .isFloat({ min: 0 })
-      .withMessage("Menu item price is required and must be a postive number"),
+      .withMessage("El precio del item del menu es requerido y debe ser positivo"),
     handleValidationErrors,
 ];

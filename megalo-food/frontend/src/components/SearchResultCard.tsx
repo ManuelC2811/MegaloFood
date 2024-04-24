@@ -10,7 +10,7 @@ type Props = {
 const SearchResultCard = ({ restaurant }: Props) => {
   return (
     <Link
-      to={/detail/${restaurant._id}}
+      to={`/detail/${restaurant._id}`}
       className="grid lg:grid-cols-[2fr_3fr] gap-5 group"
     >
       <AspectRatio ratio={16 / 6}>
@@ -39,7 +39,7 @@ const SearchResultCard = ({ restaurant }: Props) => {
             </div>
             <div className="flex items-center gap-1">
               <Banknote />
-              Delivery from £{(restaurant.deliveryPrice / 100).toFixed(2)}
+              Delivery from ${(restaurant.deliveryPrice / 100).toFixed(2)}
             </div>
           </div>
         </div>

@@ -13,15 +13,15 @@ type Props = {
 
 const SORT_OPTIONS = [
   {
-    label: "Best match",
+    label: "Mejor coincidencia",
     value: "bestMatch",
   },
   {
-    label: "Delivery price",
+    label: "Precio de envío",
     value: "deliveryPrice",
   },
   {
-    label: "Estimated delivery time",
+    label: "Tiempo estimado de entrega",
     value: "estimatedDeliveryTime",
   },
 ];
@@ -34,8 +34,8 @@ const SortOptionDropdown = ({ onChange, sortOption }: Props) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="cursor-pointer">
-        <Button variant="outline" className="w-full">
-          Sort by: {selectedSortLabel}
+        <Button variant="outline" className="w-full font-raleway font-semibold">
+          Filtrar por: {selectedSortLabel}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>

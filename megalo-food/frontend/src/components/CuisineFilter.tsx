@@ -33,12 +33,14 @@ const CuisineFilter = ({
   return (
     <>
       <div className="flex justify-between items-center px-2">
-        <div className="text-md font-semibold mb-2">Filter By Cuisine</div>
+        <div className="text-md font-semibold font-raleway mb-2">
+          Filtrar por tipo de cocina
+        </div>
         <div
           onClick={handleCuisinesReset}
-          className="text-sm font-semibold mb-2 underline cursor-pointer text-blue-500"
+          className="text-sm font-semibold mb-2 underline cursor-pointer text-blue-500 font-raleway"
         >
-          Reset Filters
+          Restablecer filtros
         </div>
       </div>
 
@@ -78,12 +80,12 @@ const CuisineFilter = ({
           className="mt-4 flex-1"
         >
           {isExpanded ? (
-            <span className="flex flex-row items-center">
-              View Less <ChevronUp />
+            <span className="flex flex-row items-center font-raleway font-semibold">
+              Ver menos <ChevronUp />
             </span>
           ) : (
-            <span className="flex flex-row items-center">
-              View More <ChevronDown />
+            <span className="flex flex-row items-center font-raleway font-semibold">
+              Ver más <ChevronDown />
             </span>
           )}
         </Button>

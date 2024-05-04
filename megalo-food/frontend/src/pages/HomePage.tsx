@@ -4,10 +4,9 @@ import SearchBar, { SearchForm } from "@/components/SearchBar";
 import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
-
   const navigate = useNavigate();
 
-  const handleSearchSubmit = ( searchFormValues: SearchForm ) => {
+  const handleSearchSubmit = (searchFormValues: SearchForm) => {
     navigate({
       pathname: `/search/${searchFormValues.searchQuery}`,
     });
@@ -22,7 +21,10 @@ const HomePage = () => {
         <span className="text-xl font-raleway">
           Comida a solo un click de distancia
         </span>
-        <SearchBar placeHolder="Search by City or Town" onSubmit={handleSearchSubmit} />
+        <SearchBar
+          placeHolder="Buscar por ciudad o localidad"
+          onSubmit={handleSearchSubmit}
+        />
       </div>
       <div className="grid md:grid-cols-2 gap-5">
         <img src={landingImage} alt="" />

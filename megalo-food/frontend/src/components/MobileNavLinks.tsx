@@ -18,6 +18,12 @@ const MobileNavLinks = () => {
       >
         Perfil
       </Link>
+      <Link
+        to="/manage-restaurant"
+        className="flex bg-white items-center font-semibold text-black font-raleway hover:text-gray-500"
+      >
+        Manejo de restaurante
+      </Link>
       <Button
         onClick={handleLogout}
         className="flex items-center px-3 font-semibold font-raleway bg-red-500 opacity-90 hover:bg-white hover:text-red-500 border border-red-500"

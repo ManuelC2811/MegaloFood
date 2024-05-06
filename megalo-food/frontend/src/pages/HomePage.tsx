@@ -18,7 +18,7 @@ const HomePage = () => {
         <h1 className="text-5xl font-bold tracking-tight text-red-600 font-raleway">
           Pesca tu comida favorita hoy
         </h1>
-        <span className="text-xl font-raleway">
+        <span className="text-xl font-raleway font-semibold">
           Comida a solo un click de distancia
         </span>
         <SearchBar
@@ -32,7 +32,7 @@ const HomePage = () => {
           <span className="font-bold text-3xl tracking-tighter font-raleway">
             Pide tu comida aún mas rápido!
           </span>
-          <span className="font-raleway">
+          <span className="font-raleway font-semibold">
             Descarga MegaloFood para pescar mas rápido!
           </span>
           <img src={appDownloadImage} alt="Imagen de descarga de aplicación" />

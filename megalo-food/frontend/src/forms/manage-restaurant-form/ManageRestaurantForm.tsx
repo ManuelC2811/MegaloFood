@@ -38,7 +38,7 @@ const formSchema = z
       z.object({
         name: z.string().min(1, "Nombre es obligatorio"),
         price: z.coerce.number().min(1, "Precio es obligatorio"),
-        description: z.string().min(1, "Descripción es obligatorio"), //Añadido por mi
+        description: z.string().min(1, "Descripción es obligatorio"),
         // imageUrl: z.string().optional(),
         // imageItemFile: z.instanceof(File, { message: "image is required" }).optional(),
       })
@@ -64,7 +64,7 @@ const ManageRestaurantForm = ({ onSave, isLoading, restaurant }: Props) => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       cuisines: [],
-      menuItems: [{ name: "", price: 0, description: "" }], //Añadido por mi -- description
+      menuItems: [{ name: "", price: 0, description: "" }],
     },
   });
 

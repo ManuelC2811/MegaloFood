@@ -26,6 +26,7 @@ const createCurrentUser = async (req: Request, res: Response) => {
 
         const newUser = new User(req.body);
         newUser.lastUpdated = new Date();
+        newUser.creationDate = new Date();
         await newUser.save();
 
         res.status(201).json(newUser.toObject());

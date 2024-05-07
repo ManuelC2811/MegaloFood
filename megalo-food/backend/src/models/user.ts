@@ -20,7 +20,8 @@ const userSchema = new mongoose.Schema({
     },
     country: {
         type: String,
-    }
+    },
+    lastUpdated: { type: Date, required: true },
 });
 
 const User = mongoose.model("User", userSchema);

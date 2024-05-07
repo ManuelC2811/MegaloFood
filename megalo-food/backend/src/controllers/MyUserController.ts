@@ -25,6 +25,7 @@ const createCurrentUser = async (req: Request, res: Response) => {
         }
 
         const newUser = new User(req.body);
+        newUser.lastUpdated = new Date();
         await newUser.save();
 
         res.status(201).json(newUser.toObject());
@@ -47,7 +48,7 @@ const updateCurrentUser = async (req: Request, res: Response) => {
         user.addressLine1 = addressLine1;
         user.city = city;
         user.country = country;
-
+        user.lastUpdated = new Date();
         await user.save();
 
         res.send(user);

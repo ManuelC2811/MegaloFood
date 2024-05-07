@@ -28,6 +28,7 @@ export type Restaurant = {
   menuItems: MenuItem[];
   imageUrl: string;
   lastUpdated: string;
+  creationDate: string;
 };
 
 export type RestaurantSearchResponse = {

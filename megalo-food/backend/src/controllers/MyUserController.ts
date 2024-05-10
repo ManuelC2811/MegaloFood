@@ -45,11 +45,34 @@ const updateCurrentUser = async (req: Request, res: Response) => {
             return res.status(404).json({ message: "Usuario no encontrado" });
         }
 
-        user.name = name;
-        user.addressLine1 = addressLine1;
-        user.city = city;
-        user.country = country;
+        let lastModifiedAttribute = "";
+
+        // Verificar qué atributo se ha modificado
+        if (name !== undefined && name !== user.name) {
+            lastModifiedAttribute = "name";
+            user.name = name;
+        }
+        if (addressLine1 !== undefined && addressLine1 !== user.addressLine1) {
+            lastModifiedAttribute = "addressLine1";
+            user.addressLine1 = addressLine1;
+        }
+        if (country !== undefined && country !== user.country) {
+            lastModifiedAttribute = "country";
+            user.country = country;
+        }
+        if (city !== undefined && city !== user.city) {
+            lastModifiedAttribute = "city";
+            user.city = city;
+        }
+
+        if (lastModifiedAttribute === "") {
+            return res.status(400).json({ message: "No se proporcionaron datos para actualizar o los datos son iguales a los existentes" });
+        }
+
+        // Actualizar la fecha de última modificación y el último atributo modificado
         user.lastUpdated = new Date();
+        user.lastModifiedAttribute = lastModifiedAttribute;
+
         await user.save();
 
         res.send(user);

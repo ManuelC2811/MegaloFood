@@ -14,6 +14,7 @@ const getCurrentUser = async (req: Request, res: Response) => {
             return res.status(404).json({ message: 'Usuario no encontrado' });
         }
 
+        // Registra la actividad de consulta de perfil
         await logUserActivity(req.userId, currentUser.email, 'Consulta de perfil');
         
         res.json(currentUser);

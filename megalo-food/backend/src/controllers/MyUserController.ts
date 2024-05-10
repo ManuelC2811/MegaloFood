@@ -3,7 +3,12 @@ import User from "../models/user";
 
 const getCurrentUser = async (req: Request, res: Response) => {
     try{
-        const currentUser = await User.findOne({ _id: req.userId });
+        const currentUser = await User.findOneAndUpdate(
+            { _id: req.userId },
+            { $set: { lastLogin: new Date() } },
+            { new: true }
+        );
+
         if (!currentUser) {
             return res.status(404).json({ message: 'Usuario no encontrado' });
         }

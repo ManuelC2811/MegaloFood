@@ -1,5 +1,37 @@
 import mongoose from "mongoose";
 
+export type MenuItem = {
+    _id: string;
+    name: string;
+    price: number;
+    description: string;
+    // imageUrl: string;
+  };
+
+  export type Restaurant = {
+    _id: string;
+    user: string;
+    restaurantName: string;
+    city: string;
+    country: string;
+    deliveryPrice: number;
+    estimatedDeliveryTime: number;
+    cuisines: string[];
+    menuItems: MenuItem[];
+    imageUrl: string;
+    lastUpdated: string;
+    creationDate: string;
+  };
+  
+  export type RestaurantSearchResponse = {
+    data: Restaurant[];
+    pagination: {
+      total: number;
+      page: number;
+      pages: number;
+    };
+  };
+
 const userSchema = new mongoose.Schema({
     auth0Id: {
         type: String,

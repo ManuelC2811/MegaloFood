@@ -1,8 +1,9 @@
 import { Request, Response } from "express";
 import User from "../models/user";
+import { logUserActivity } from "./MyUserTraceabilityController";
 
 const getCurrentUser = async (req: Request, res: Response) => {
-    try{
+    try {
         const currentUser = await User.findOneAndUpdate(
             { _id: req.userId },
             { $set: { lastLogin: new Date() } },
@@ -13,6 +14,8 @@ const getCurrentUser = async (req: Request, res: Response) => {
             return res.status(404).json({ message: 'Usuario no encontrado' });
         }
 
+        await logUserActivity(req.userId, currentUser.email, 'Consulta de perfil');
+        
         res.json(currentUser);
     } catch(error) {
         console.log(error);
@@ -21,8 +24,8 @@ const getCurrentUser = async (req: Request, res: Response) => {
 }
 
 const createCurrentUser = async (req: Request, res: Response) => {
-    try{
-        const { auth0Id } = req.body;
+    try {
+        const { auth0Id, email } = req.body;
         const existingUser = await User.findOne({ auth0Id });
 
         if(existingUser) {
@@ -34,8 +37,10 @@ const createCurrentUser = async (req: Request, res: Response) => {
         newUser.creationDate = new Date();
         await newUser.save();
 
+        await logUserActivity(newUser._id.toString(), email, 'Creación de cuenta');
+        
         res.status(201).json(newUser.toObject());
-    } catch(error){
+    } catch(error) {
         console.log(error);
         res.status(500).json({ message: "Error en la creación de usuario" });
     }
@@ -46,7 +51,7 @@ const updateCurrentUser = async (req: Request, res: Response) => {
         const { name, addressLine1, country, city } = req.body;
         const user = await User.findById(req.userId);
 
-        if(!user){
+        if(!user) {
             return res.status(404).json({ message: "Usuario no encontrado" });
         }
 
@@ -80,6 +85,8 @@ const updateCurrentUser = async (req: Request, res: Response) => {
 
         await user.save();
 
+        await logUserActivity(user._id.toString(), user.email, 'Actualización de perfil');
+        
         res.send(user);
 
     } catch (error) {

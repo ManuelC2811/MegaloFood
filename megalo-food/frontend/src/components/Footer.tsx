@@ -2,6 +2,7 @@ import { useState } from "react";
 import Modal from "react-modal";
 import PrivacyPolicy from "./PrivacyPolicy";
 import TermsOfService from "./TermsOfService";
+import AboutUs from "./AboutUs";
 
 const Footer = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -27,14 +28,17 @@ const Footer = () => {
             Política de Privacidad
           </button>
           <button onClick={() => openModal(<TermsOfService />)}>
-            Términos de nuestro Servicio
+            Términos de Nuestro Servicio
+          </button>
+          <button onClick={() => openModal(<AboutUs />)}>
+            Acerca de Nosotros
           </button>
         </span>
       </div>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
-        contentLabel="Política de Privacidad o Términos de Servicio"
+        contentLabel="Información adicional"
         style={{
           overlay: {
             backgroundColor: "rgba(0, 0, 0, 0.5)",

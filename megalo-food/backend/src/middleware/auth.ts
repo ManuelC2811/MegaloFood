@@ -3,6 +3,7 @@ import { Request, Response, NextFunction } from 'express';
 import jwt from "jsonwebtoken";
 import User from "../models/user";
 
+
 declare global {
     namespace Express {
         interface Request {
@@ -36,11 +37,13 @@ export const jwtParse = async(req: Request, res: Response, next: NextFunction) =
         if(!user){
             return res.sendStatus(401);
         }
-
+        
+        
         req.auth0Id = auth0Id as string;
         req.userId = user._id.toString();
+        
         next();
-
+        
     } catch (error) {
         return res.sendStatus(401);
     }

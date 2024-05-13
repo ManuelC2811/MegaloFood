@@ -2,7 +2,7 @@ import { auth } from "express-oauth2-jwt-bearer";
 import { Request, Response, NextFunction } from 'express';
 import jwt from "jsonwebtoken";
 import User from "../models/user";
-import { trazabilidadlogin } from '../controllers/LogInTrazabilityController';
+
 
 declare global {
     namespace Express {
@@ -41,8 +41,7 @@ export const jwtParse = async(req: Request, res: Response, next: NextFunction) =
         
         req.auth0Id = auth0Id as string;
         req.userId = user._id.toString();
-    // const nombre = user.email;
-    //    await trazabilidadlogin(nombre); // Llamar al método trazabilidad pasando req y res
+        
         next();
         
     } catch (error) {

@@ -1,9 +1,11 @@
 import TrazabilidadLogIn from "../models/logintrazability";
-const trazabilidadlogin = async (name: string) => {
+const trazabilidadlogin = async (email: string, activity: string) => {
     try {
       
       const nuevaTrazabilidadLogIn = new TrazabilidadLogIn({
-        name
+        email,
+        activity,
+        timestamp: new Date()
       });
       await nuevaTrazabilidadLogIn.save();
   

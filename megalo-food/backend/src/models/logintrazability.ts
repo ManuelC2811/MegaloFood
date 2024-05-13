@@ -2,8 +2,18 @@ import mongoose from 'mongoose';
 
 // Definir el esquema para el registro de trazabilidad
 const trazabilidadLogInSchema = new mongoose.Schema({
-  nombre: {type: String},
-  fechaHora: { type: Date, default: Date.now }
+  email: {
+    type: String,
+    required: true
+},
+activity: {
+  type: String,
+  required: true
+},
+timestamp: {
+  type: Date,
+  required: true
+}
 });
 
 // Definir el modelo para el registro de trazabilidad

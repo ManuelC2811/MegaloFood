@@ -1,4 +1,5 @@
 import landingImage from "../assets/landing.png";
+import aboutUsImage from "../assets/acercaDe.jpg";
 import appDownloadImage from "../assets/appDownload.png";
 import SearchBar, { SearchForm } from "@/components/SearchBar";
 import { useNavigate } from "react-router-dom";
@@ -26,6 +27,25 @@ const HomePage = () => {
           onSubmit={handleSearchSubmit}
         />
       </div>
+      <div id="about-us" className="grid md:grid-cols-2 ml-20 mr-20">
+        <div className="flex flex-col items-start justify-center gap-4">
+          <h2 className="text-4xl font-bold font-raleway">
+            Acerca de nosotros
+          </h2>
+          <p className="text-lg max-w-xl tracking-tighter font-raleway">
+            Bienvenido a <strong>MegaloFood</strong> , tu destino culinario en
+            línea para sabores auténticos y experiencias gastronómicas
+            inolvidables. Nuestro objetivo es proporcionar a los restaurantes
+            una herramienta intuitiva y eficaz para gestionar sus pedidos a
+            domicilio, optimizando la comunicación con sus clientes y agilizando
+            los procesos logísticos con sus propios equipos de reparto. Al mismo
+            tiempo, buscamos brindar a los usuarios una experiencia fluida y
+            segura al realizar sus pedidos desde la comodidad de sus hogares.
+          </p>
+        </div>
+        <img src={aboutUsImage} alt="Descripción de la imagen" />
+      </div>
+
       <div className="grid md:grid-cols-2 gap-5">
         <img src={landingImage} alt="" />
         <div className="flex flex-col items-center justify-center gap-4 text-center">

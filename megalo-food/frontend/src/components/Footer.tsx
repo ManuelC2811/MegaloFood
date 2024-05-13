@@ -2,7 +2,6 @@ import { useState } from "react";
 import Modal from "react-modal";
 import PrivacyPolicy from "./PrivacyPolicy";
 import TermsOfService from "./TermsOfService";
-import AboutUs from "./AboutUs";
 
 const Footer = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -29,9 +28,6 @@ const Footer = () => {
           </button>
           <button onClick={() => openModal(<TermsOfService />)}>
             Términos de Nuestro Servicio
-          </button>
-          <button onClick={() => openModal(<AboutUs />)}>
-            Acerca de Nosotros
           </button>
         </span>
       </div>

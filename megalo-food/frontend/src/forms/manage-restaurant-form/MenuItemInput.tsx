@@ -38,7 +38,7 @@ const MenuItemInput = ({ index, removeMenuItem }: Props) => {
         )}
       />
 
-      <FormField
+      {/* <FormField
         control={control}
         name="imageItemFile"
         render={({ field }) => (
@@ -60,7 +60,7 @@ const MenuItemInput = ({ index, removeMenuItem }: Props) => {
             </FormControl>
           </FormItem>
         )}
-      />
+      /> */}
 
       <FormField
         control={control}

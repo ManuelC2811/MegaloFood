@@ -13,13 +13,17 @@ import { Input } from "@/components/ui/input";
 import { User } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { z } from "zod";
 
 const formSchema = z.object({
   email: z.string().optional(),
   name: z.string().min(1, "name is required"),
   addressLine1: z.string().min(1, "Address Line 1 is required"),
+  cellphone: z
+    .string()
+    .min(1, "Telefono movil is required")
+    .regex(/^\+?\d{1,3}\s?\d{1,4}\s?\d{4,}$/, "El formato del número de teléfono no es válido"),
   city: z.string().min(1, "city is required"),
   country: z.string().min(1, "country is required"),
 });
@@ -41,6 +45,14 @@ const UserProfileForm = ({ onSave, isLoading, currentUser }: Props) => {
   useEffect(() => {
     form.reset(currentUser);
   }, [currentUser, form]);
+
+  const formatPhoneNumber = (value: string) => {
+    return value
+      .replace(/[^\d+]/g, '')
+      .replace(/(\+\d{1,2})(\d{2,3})(\d{4,})/, (match, p1, p2, p3) => {
+        return `${p1} ${p2} ${p3}`;
+      });
+  };
 
   return (
     <Form {...form}>
@@ -94,6 +106,27 @@ const UserProfileForm = ({ onSave, isLoading, currentUser }: Props) => {
                 </FormLabel>
                 <FormControl>
                   <Input {...field} className="bg-white" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <Controller
+            control={form.control}
+            name="cellphone"
+            render={({ field }) => (
+              <FormItem className="flex-1">
+                <FormLabel className="font-raleway font-bold">Telefono movil</FormLabel>
+                <FormControl>
+                  <Input
+                    {...field}
+                    className="bg-white"
+                    onChange={(e) => {
+                      const formattedValue = formatPhoneNumber(e.target.value);
+                      field.onChange(formattedValue);
+                    }}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>

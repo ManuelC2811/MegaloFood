@@ -21,6 +21,7 @@ const handleValidationErrors = (req, res, next) => __awaiter(void 0, void 0, voi
 exports.validateMyUserRequest = [
     (0, express_validator_1.body)("name").isString().notEmpty().withMessage("Nombre debe ser de tipo String"),
     (0, express_validator_1.body)("addressLine1").isString().notEmpty().withMessage("Dirección debe ser de tipo String"),
+    (0, express_validator_1.body)("cellphone").isString().notEmpty().withMessage("Telefono debe ser de tipo String"),
     (0, express_validator_1.body)("city").isString().notEmpty().withMessage("Ciudad debe ser de tipo String"),
     (0, express_validator_1.body)("country").isString().notEmpty().withMessage("País debe ser de tipo String"),
     handleValidationErrors,

@@ -44,13 +44,14 @@ const createCurrentUser = (req, res) => __awaiter(void 0, void 0, void 0, functi
 });
 const updateCurrentUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { name, addressLine1, country, city } = req.body;
+        const { name, addressLine1,cellphone, country, city } = req.body;
         const user = yield user_1.default.findById(req.userId);
         if (!user) {
             return res.status(404).json({ message: "Usuario no encontrado" });
         }
         user.name = name;
         user.addressLine1 = addressLine1;
+        user.cellphone = cellphone;
         user.city = city;
         user.country = country;
         yield user.save();

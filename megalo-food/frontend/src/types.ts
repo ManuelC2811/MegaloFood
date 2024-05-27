@@ -1,14 +1,23 @@
 import mongoose from "mongoose";
 
+export type User = {
+  _id: string;
+  email: string;
+  name: string;
+  addressLine1: string;
+  city: string;
+  country: string;
+};
+
 export type MenuItem = {
     _id: string;
     name: string;
     price: number;
     description: string;
     // imageUrl: string;
-  };
+};
 
-  export type Restaurant = {
+export type Restaurant = {
     _id: string;
     user: string;
     restaurantName: string;
@@ -21,16 +30,44 @@ export type MenuItem = {
     imageUrl: string;
     lastUpdated: string;
     creationDate: string;
-  };
+};
   
-  export type RestaurantSearchResponse = {
-    data: Restaurant[];
-    pagination: {
-      total: number;
-      page: number;
-      pages: number;
-    };
+export type OrderStatus =
+  | "placed"
+  | "paid"
+  | "inProgress"
+  | "outForDelivery"
+  | "delivered";
+
+export type Order = {
+  _id: string;
+  restaurant: Restaurant;
+  user: User;
+  cartItems: {
+    menuItemId: string;
+    name: string;
+    quantity: string;
+  }[];
+  deliveryDetails: {
+    name: string;
+    addressLine1: string;
+    city: string;
+    email: string;
   };
+  totalAmount: number;
+  status: OrderStatus;
+  createdAt: string;
+  restaurantId: string;
+};
+
+export type RestaurantSearchResponse = {
+  data: Restaurant[];
+  pagination: {
+    total: number;
+    page: number;
+    pages: number;
+  };
+};
 
 const userSchema = new mongoose.Schema({
     auth0Id: {
@@ -47,9 +84,6 @@ const userSchema = new mongoose.Schema({
     addressLine1: {
         type: String,
     },
-    cellphone: {
-      type: String,
-  },
     city: {
         type: String,
     },

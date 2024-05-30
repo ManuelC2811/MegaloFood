@@ -38,8 +38,8 @@ const UserProfileForm = ({
   onSave,
   isLoading,
   currentUser,
-  title = "User Profile",
-  buttonText = "Submit",
+  title = "Perfil de usuario",
+  buttonText = "Guardar",
 }: Props) => {
   const form = useForm<UserFormData>({
     resolver: zodResolver(formSchema),

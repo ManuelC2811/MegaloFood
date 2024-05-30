@@ -19,7 +19,7 @@ const MainNav = () => {
         <>
           <Link
             to="/order-status"
-            className="font-bold font-raleway hover:text-red-500"
+            className="font-semibold font-raleway hover:text-red-500"
           >
             Mis pedidos
           </Link>

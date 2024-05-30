@@ -17,9 +17,9 @@ const OrderStatusHeader = ({ order }: Props) => {
     const hours = created.getHours();
     const minutes = created.getMinutes();
 
-    const paddedMinutes = minutes < 10 ? 0${minutes} : minutes;
+    const paddedMinutes = minutes < 10 ? `0${minutes}` : minutes;
 
-    return ${hours}:${paddedMinutes};
+    return `${hours}:${paddedMinutes}`;
   };
 
   const getOrderStatusInfo = () => {

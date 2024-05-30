@@ -1,4 +1,4 @@
-import { useGetRestaurant } from "@/api/RestaurantApi";
+import { useGetRestaurant } from "@/api/RestauranteApi";
 import MenuItem from "@/components/MenuItem";
 import OrderSummary from "@/components/OrderSummary";
 import RestaurantInfo from "@/components/RestaurantInfo";

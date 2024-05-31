@@ -1,5 +1,6 @@
-import { MenuItem as MenuItemType } from '../types';
+import { MenuItem as MenuItemType } from "../types";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 interface MenuItemProps {
   menuItem: MenuItemType;
@@ -7,11 +8,15 @@ interface MenuItemProps {
   updateCartItemQuantity: (menuItemId: string, quantity: number) => void;
 }
 
-const MenuItem: React.FC<MenuItemProps> = ({ menuItem, addToCart, updateCartItemQuantity }) => {
+const MenuItem: React.FC<MenuItemProps> = ({
+  menuItem,
+  addToCart,
+  updateCartItemQuantity,
+}) => {
   // Convertir el precio al formato correcto
-  const formattedPrice = (menuItem.price / 100).toLocaleString('es-CO', {
-    style: 'currency',
-    currency: 'COP',
+  const formattedPrice = (menuItem.price / 100).toLocaleString("es-CO", {
+    style: "currency",
+    currency: "COP",
   });
 
   return (
@@ -23,22 +28,22 @@ const MenuItem: React.FC<MenuItemProps> = ({ menuItem, addToCart, updateCartItem
         <div className="flex justify-between items-center">
           <p>{formattedPrice}</p>
           <div className="flex items-center gap-2">
-            <button
+            <Button
               onClick={() => updateCartItemQuantity(menuItem._id, -1)}
-              className="button-decrease"
+              className="button-decrease bg-red-500 text-white text-xl w-10 h-10 flex items-center justify-center rounded-full"
             >
               -
-            </button>
-
-            <button
+            </Button>
+            <Button
               onClick={() => addToCart()}
-              className="button-increase"
+              className="button-increase bg-green-500 text-white text-xl w-10 h-10 flex items-center justify-center rounded-full"
             >
               +
-            </button>
+            </Button>
           </div>
         </div>
       </CardContent>
+      <CardContent className="font-raleway">{menuItem.description}</CardContent>
     </Card>
   );
 };

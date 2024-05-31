@@ -1,5 +1,4 @@
 import { useGetRestaurant } from "@/api/RestauranteApi";
-import MenuItem from "@/components/MenuItem";
 import OrderSummary from "@/components/OrderSummary";
 import RestaurantInfo from "@/components/RestaurantInfo";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -10,6 +9,7 @@ import { MenuItem as MenuItemType } from "../types";
 import CheckoutButton from "@/components/CheckoutButton";
 import { UserFormData } from "@/forms/user-profile-form/UserProfileForm";
 import { useCreateCheckoutSession } from "@/api/OrderApi";
+import MenuItem from "@/components/MenuItem";
 
 export type CartItem = {
   _id: string;
@@ -54,6 +54,23 @@ const DetailPage = () => {
           },
         ];
       }
+
+      sessionStorage.setItem(
+        `cartItems-${restaurantId}`,
+        JSON.stringify(updatedCartItems)
+      );
+
+      return updatedCartItems;
+    });
+  };
+
+  const updateCartItemQuantity = (menuItemId: string, quantity: number) => {
+    setCartItems((prevCartItems) => {
+      const updatedCartItems = prevCartItems.map((cartItem) =>
+        cartItem._id === menuItemId
+          ? { ...cartItem, quantity: Math.max(1, cartItem.quantity + quantity) }
+          : cartItem
+      );
 
       sessionStorage.setItem(
         `cartItems-${restaurantId}`,
@@ -122,8 +139,10 @@ const DetailPage = () => {
           <span className="text-2xl font-bold tracking-tight">Menu</span>
           {restaurant.menuItems.map((menuItem) => (
             <MenuItem
+              key={menuItem._id}
               menuItem={menuItem}
               addToCart={() => addToCart(menuItem)}
+              updateCartItemQuantity={updateCartItemQuantity}
             />
           ))}
         </div>

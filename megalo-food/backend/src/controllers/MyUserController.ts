@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import User from "../models/user";
 import { logUserActivity } from "./MyUserTraceabilityController";
-import { trazabilidadlogin } from '../controllers/LogInTrazabilityController';
 const getCurrentUser = async (req: Request, res: Response) => {
     try {
         const currentUser = await User.findOneAndUpdate(
@@ -13,9 +12,8 @@ const getCurrentUser = async (req: Request, res: Response) => {
         if (!currentUser) {
             return res.status(404).json({ message: 'Usuario no encontrado' });
         }
-        await trazabilidadlogin(currentUser.email,"login");
         // Registra la actividad de consulta de perfil
-        await logUserActivity(req.userId, currentUser.email, 'Consulta de perfil');
+        //await logUserActivity(req.userId, currentUser.email, 'Consulta de perfil');
         
         res.json(currentUser);
     } catch(error) {

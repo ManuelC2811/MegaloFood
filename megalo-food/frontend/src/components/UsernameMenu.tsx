@@ -10,12 +10,11 @@ import { Link } from "react-router-dom";
 import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
 
-import { useGetMyUser} from "@/api/MyUserApi";
+
 
 
 const UsernameMenu = () => {
   const { user, logout } = useAuth0();
-  useGetMyUser();
   const handleLogout = async () => {
     await logout();
     window.location.assign(window.location.origin);

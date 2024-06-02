@@ -17,7 +17,7 @@ const Footer = () => {
   };
 
   return (
-    <div className="bg-red-500 opacity-95 py-10">
+    <div className="bg-black opacity-95 py-10">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
         <span className="text-3xl text-white font-bold font-raleway tracking-tight">
           MegaloFood

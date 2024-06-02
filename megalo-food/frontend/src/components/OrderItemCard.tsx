@@ -45,10 +45,19 @@ const OrderItemCard = ({ order }: Props) => {
     return `${hours}:${paddedMinutes}`;
   };
 
+  // Formatear la fecha de creación del pedido
+  const formattedDate = new Date(order.createdAt).toLocaleDateString();
+
   return (
     <Card>
       <CardHeader>
         <CardTitle className="grid md:grid-cols-4 gap-4 justify-between mb-3">
+          <div>
+            Fecha de creación:
+            <span className="ml-2 font-normal">
+              {formattedDate}
+            </span>
+          </div>
           <div>
             Cliente:
             <span className="ml-2 font-normal">

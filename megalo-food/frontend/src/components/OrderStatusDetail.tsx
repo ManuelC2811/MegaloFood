@@ -6,8 +6,14 @@ type Props = {
 };
 
 const OrderStatusDetail = ({ order }: Props) => {
+  // Formatear la fecha de creación del pedido
+  const formattedDate = new Date(order.createdAt).toLocaleDateString();
   return (
     <div className="space-y-5 font-raleway">
+      <div className="flex flex-col">
+        <span className="font-bold">Fecha de creación:</span>
+        <span>{formattedDate}</span>
+      </div>
       <div className="flex flex-col">
         <span className="font-bold">Entregar a:</span>
         <span>{order.deliveryDetails.name}</span>

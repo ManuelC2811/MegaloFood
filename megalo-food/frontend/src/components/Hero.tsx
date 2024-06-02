@@ -24,7 +24,7 @@ const Hero = () => {
             Comida a solo un click de distancia
           </span>
           <SearchBar
-            placeHolder="Buscar por ciudad o localidad"
+            placeHolder="Buscar por ciudad"
             onSubmit={handleSearchSubmit}
           />
         </div>

@@ -51,12 +51,10 @@ const OrderItemCard = ({ order }: Props) => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="grid md:grid-cols-4 gap-4 justify-between mb-3">
+        <CardTitle className="grid md:grid-cols-5 gap-4 justify-between mb-3">
           <div>
             Fecha de creación:
-            <span className="ml-2 font-normal">
-              {formattedDate}
-            </span>
+            <span className="ml-2 font-normal">{formattedDate}</span>
           </div>
           <div>
             Cliente:

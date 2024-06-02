@@ -22,10 +22,6 @@ export const validateMyUserRequest = [
     .isString()
     .notEmpty()
     .withMessage("Dirección debe ser de tipo String"),
-  body("cellphone")
-    .isString()
-    .notEmpty()
-    .withMessage("telefono debe ser de tipo String"),
   body("city")
     .isString()
     .notEmpty()

@@ -9,7 +9,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
-
+import { useGetMyUser } from "@/api/MyUserApi";
 
 
 
@@ -19,22 +19,26 @@ const UsernameMenu = () => {
     await logout();
     window.location.assign(window.location.origin);
   };
-
+  const { currentUser} = useGetMyUser();
+  console.log("User: ", currentUser);
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="flex items-center px-3 font-bold font-raleway hover:text-red-500 opacity-90 gap-2">
         <CircleUserRound className="text-red-500 opacity-90" />
         {user?.email}
+        
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuItem>
-          <Link
-            to="/manage-restaurant"
-            className="font-bold font-raleway hover:text-red-500 opacity-90"
-          >
-            Manejo de Restaurante
-          </Link>
-        </DropdownMenuItem>
+        {currentUser?.rol === "vendedor" && (
+          <DropdownMenuItem>
+            <Link
+              to="/manage-restaurant"
+              className="font-bold font-raleway hover:text-red-500 opacity-90"
+            >
+              Manejo de Restaurante
+            </Link>
+          </DropdownMenuItem>
+        )}
         <DropdownMenuItem>
           <Link
             to="/user-profile"

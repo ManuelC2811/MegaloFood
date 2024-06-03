@@ -7,6 +7,7 @@ export type User = {
   addressLine1: string;
   city: string;
   country: string;
+  rol: string;
 };
 
 export type MenuItem = {

@@ -54,8 +54,11 @@ const ManageRestaurantPage = () => {
           isLoading={isCreateLoading || isUpdateLoading}
         />
       </TabsContent>
-      <StatisticsCard 
-      />
+      <TabsContent value="statistics">
+        <StatisticsCard 
+        />
+      </TabsContent>
+      
     </Tabs>
   );
 };

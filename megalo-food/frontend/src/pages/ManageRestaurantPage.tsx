@@ -7,6 +7,7 @@ import {
 import OrderItemCard from "@/components/OrderItemCard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ManageRestaurantForm from "@/forms/manage-restaurant-form/ManageRestaurantForm";
+import StatisticsCard from "@/components/StatisticsCard";
 
 const ManageRestaurantPage = () => {
   const { createRestaurant, isLoading: isCreateLoading } =
@@ -31,13 +32,16 @@ const ManageRestaurantPage = () => {
         >
           Manejo de restaurante
         </TabsTrigger>
+        <TabsTrigger value="statistics" className="font-raleway font-semibold">
+          Estadísticas
+        </TabsTrigger>
       </TabsList>
       <TabsContent
         value="orders"
         className="space-y-5 bg-gray-50 p-10 rounded-lg"
       >
         <h2 className="text-2xl font-bold font-raleway">
-          {orders?.length} Pedidos activos
+          {orders?.length} Pedidos
         </h2>
         {orders?.map((order) => (
           <OrderItemCard order={order} />
@@ -50,6 +54,8 @@ const ManageRestaurantPage = () => {
           isLoading={isCreateLoading || isUpdateLoading}
         />
       </TabsContent>
+      <StatisticsCard 
+      />
     </Tabs>
   );
 };

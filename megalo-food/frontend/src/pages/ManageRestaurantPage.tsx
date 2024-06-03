@@ -55,10 +55,8 @@ const ManageRestaurantPage = () => {
         />
       </TabsContent>
       <TabsContent value="statistics">
-        <StatisticsCard 
-        />
+        <StatisticsCard />
       </TabsContent>
-      
     </Tabs>
   );
 };

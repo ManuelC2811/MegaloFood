@@ -74,9 +74,7 @@ const OrderItemCard = ({ order }: Props) => {
           </div>
           <div>
             Costo total:
-            <span className="ml-2 font-normal">
-              ${(order.totalAmount)}
-            </span>
+            <span className="ml-2 font-normal">${order.totalAmount}</span>
           </div>
         </CardTitle>
         <Separator />

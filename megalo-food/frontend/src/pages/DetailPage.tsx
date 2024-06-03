@@ -100,7 +100,6 @@ const DetailPage = () => {
     if (!restaurant) {
       return;
     }
-
     const checkoutData = {
       cartItems: cartItems.map((cartItem) => ({
         menuItemId: cartItem._id,
@@ -115,6 +114,7 @@ const DetailPage = () => {
         country: userFormData.country,
         email: userFormData.email as string,
       },
+      totalAmount: (cartItems.reduce((total, item) => total + (item.price * item.quantity), 0) + restaurant.deliveryPrice).toFixed(2),
     };
 
     const data = await createCheckoutSession(checkoutData);

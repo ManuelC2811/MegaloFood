@@ -33,6 +33,7 @@ type CheckoutSessionRequest = {
     city: string;
   };
   restaurantId: string;
+  totalAmount: number;
 };
 
 const stripeWebhookHandler = async (req: Request, res: Response) => {
@@ -77,7 +78,7 @@ const createCheckoutSession = async (req: Request, res: Response) => {
     if (!restaurant) {
       throw new Error("Restaurant not found");
     }
-
+    
     const newOrder = new Order({
       restaurant: restaurant,
       user: req.userId,
@@ -102,7 +103,7 @@ const createCheckoutSession = async (req: Request, res: Response) => {
     if (!session.url) {
       return res.status(500).json({ message: "Error creating stripe session" });
     }
-
+    newOrder.totalAmount = checkoutSessionRequest.totalAmount;
     await newOrder.save();
     res.json({ url: session.url });
   } catch (error: any) {

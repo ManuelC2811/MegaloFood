@@ -48,11 +48,11 @@ type CheckoutSessionRequest = {
     city: string;
   };
   restaurantId: string;
+  totalAmount: string;
 };
 
 export const useCreateCheckoutSession = () => {
   const { getAccessTokenSilently } = useAuth0();
-
   const createCheckoutSessionRequest = async (
     checkoutSessionRequest: CheckoutSessionRequest
   ) => {

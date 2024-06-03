@@ -24,6 +24,7 @@ const userSchema = new mongoose.Schema({
   lastUpdated: { type: Date, required: true },
   creationDate: { type: Date, required: true },
   lastLogin: { type: Date },
+  rol: { type: String },
   lastModifiedAttribute: { type: String }, // Nuevo campo para almacenar el nombre del último atributo modificado
 });
 

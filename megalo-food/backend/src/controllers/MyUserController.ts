@@ -33,6 +33,7 @@ const createCurrentUser = async (req: Request, res: Response) => {
 
     const newUser = new User(req.body);
     newUser.lastUpdated = new Date();
+    newUser.rol = "Comprador";
     newUser.creationDate = new Date();
     await newUser.save();
 
@@ -73,7 +74,7 @@ const updateCurrentUser = async (req: Request, res: Response) => {
       lastModifiedAttribute = "city";
       user.city = city;
     }
-
+    
     if (lastModifiedAttribute === "") {
       return res.status(400).json({
         message:

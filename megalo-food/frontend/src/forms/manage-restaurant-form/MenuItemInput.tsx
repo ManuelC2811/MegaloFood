@@ -88,7 +88,7 @@ const MenuItemInput = ({ index, removeMenuItem }: Props) => {
             <FormControl>
               <textarea
                 {...field}
-                placeholder="Delicious pizza with mozzarella cheese"
+                placeholder="Deliciosa pizza con queso mozzarella"
                 className="bg-white w-80 h-20 border rounded-md text-sm"
               />
             </FormControl>

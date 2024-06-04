@@ -47,6 +47,8 @@ const OrderItemCard = ({ order }: Props) => {
 
   const formattedDate = new Date(order.createdAt).toLocaleDateString();
 
+  const isDisabled = status === "cancelled" || status === "delivered";
+
   return (
     <Card className="p-4 shadow-md">
       <CardHeader>
@@ -99,7 +101,7 @@ const OrderItemCard = ({ order }: Props) => {
           <Label htmlFor="status">Cuál es el estado de este pedido?</Label>
           <Select
             value={status}
-            disabled={isLoading}
+            disabled={isLoading || isDisabled}
             onValueChange={(value) => handleStatusChange(value as OrderStatus)}
           >
             <SelectTrigger id="status">

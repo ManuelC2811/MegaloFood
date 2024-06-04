@@ -16,4 +16,5 @@ export const ORDER_STATUS: OrderStatusInfo[] = [
   { label: "En proceso", value: "inProgress", progressValue: 50 },
   { label: "En camino", value: "outForDelivery", progressValue: 75 },
   { label: "Entregado", value: "delivered", progressValue: 100 },
+  { label: "Cancelado", value: "cancelled", progressValue: 0 },
 ];

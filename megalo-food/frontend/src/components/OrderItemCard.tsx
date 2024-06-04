@@ -48,6 +48,8 @@ const OrderItemCard = ({ order }: Props) => {
   // Formatear la fecha de creación del pedido
   const formattedDate = new Date(order.createdAt).toLocaleDateString();
 
+  const isDisabled = status === "cancelled" || status === "delivered";
+
   return (
     <Card>
       <CardHeader>
@@ -82,7 +84,7 @@ const OrderItemCard = ({ order }: Props) => {
       <CardContent className="flex flex-col gap-6">
         <div className="flex flex-col gap-2">
           {order.cartItems.map((cartItem) => (
-            <span>
+            <span key={cartItem.name}>
               <Badge variant="outline" className="mr-2">
                 {cartItem.quantity}
               </Badge>
@@ -94,7 +96,7 @@ const OrderItemCard = ({ order }: Props) => {
           <Label htmlFor="status">Cuál es el estado de este pedido?</Label>
           <Select
             value={status}
-            disabled={isLoading}
+            disabled={isLoading || isDisabled}
             onValueChange={(value) => handleStatusChange(value as OrderStatus)}
           >
             <SelectTrigger id="status">
@@ -102,7 +104,9 @@ const OrderItemCard = ({ order }: Props) => {
             </SelectTrigger>
             <SelectContent position="popper">
               {ORDER_STATUS.map((status) => (
-                <SelectItem value={status.value}>{status.label}</SelectItem>
+                <SelectItem key={status.value} value={status.value}>
+                  {status.label}
+                </SelectItem>
               ))}
             </SelectContent>
           </Select>

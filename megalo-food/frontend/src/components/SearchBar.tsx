@@ -79,7 +79,7 @@ const SearchBar = ({ onSubmit, onReset, placeHolder, searchQuery }: Props) => {
           variant="outline"
           className="rounded-full font-raleway"
         >
-          Reset
+          Restablecer
         </Button>
         <Button type="submit" className="rounded-full bg-red-500 font-raleway">
           Buscar

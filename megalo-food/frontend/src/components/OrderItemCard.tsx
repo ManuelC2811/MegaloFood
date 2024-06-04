@@ -45,13 +45,12 @@ const OrderItemCard = ({ order }: Props) => {
     return `${hours}:${paddedMinutes}`;
   };
 
-  // Formatear la fecha de creación del pedido
   const formattedDate = new Date(order.createdAt).toLocaleDateString();
 
   return (
-    <Card>
+    <Card className="p-4 shadow-md">
       <CardHeader>
-        <CardTitle className="grid md:grid-cols-5 gap-4 justify-between mb-3">
+        <CardTitle className="grid md:grid-cols-2 gap-4 mb-4">
           <div>
             Fecha de creación:
             <span className="ml-2 font-normal">{formattedDate}</span>
@@ -60,6 +59,12 @@ const OrderItemCard = ({ order }: Props) => {
             Cliente:
             <span className="ml-2 font-normal">
               {order.deliveryDetails.name}
+            </span>
+          </div>
+          <div>
+            Correo del cliente:
+            <span className="ml-2 font-normal">
+              {order.deliveryDetails.email}
             </span>
           </div>
           <div>
@@ -79,15 +84,15 @@ const OrderItemCard = ({ order }: Props) => {
         </CardTitle>
         <Separator />
       </CardHeader>
-      <CardContent className="flex flex-col gap-6">
-        <div className="flex flex-col gap-2">
+      <CardContent className="flex flex-col gap-4">
+        <div className="flex flex-wrap gap-2">
           {order.cartItems.map((cartItem) => (
-            <span>
+            <div key={cartItem.name} className="flex items-center space-x-2">
               <Badge variant="outline" className="mr-2">
                 {cartItem.quantity}
               </Badge>
-              {cartItem.name}
-            </span>
+              <span>{cartItem.name}</span>
+            </div>
           ))}
         </div>
         <div className="flex flex-col space-y-1.5">
@@ -102,7 +107,9 @@ const OrderItemCard = ({ order }: Props) => {
             </SelectTrigger>
             <SelectContent position="popper">
               {ORDER_STATUS.map((status) => (
-                <SelectItem value={status.value}>{status.label}</SelectItem>
+                <SelectItem key={status.value} value={status.value}>
+                  {status.label}
+                </SelectItem>
               ))}
             </SelectContent>
           </Select>

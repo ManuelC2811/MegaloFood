@@ -7,6 +7,8 @@ import SearchResultInfo from "@/components/SearchResultInfo";
 import SortOptionDropdown from "@/components/SortOptionDropdown";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import { useGetMyUser } from "@/api/MyUserApi";
+
 
 export type SearchState = {
   searchQuery: string;
@@ -16,6 +18,7 @@ export type SearchState = {
 };
 
 const SearchPage = () => {
+  const { currentUser} = useGetMyUser();
   const { city } = useParams();
   const [searchState, setSearchState] = useState<SearchState>({
     searchQuery: "",
@@ -28,6 +31,8 @@ const SearchPage = () => {
 
   const { results, isLoading } = useSearchRestaurants(searchState, city);
 
+  
+  
   const setSortOption = (sortOption: string) => {
     setSearchState((prevState) => ({
       ...prevState,
@@ -74,7 +79,8 @@ const SearchPage = () => {
   if (!results?.data || !city) {
     return <span>No results found</span>;
   }
-
+  results.data = results.data.filter(item => item.user !== currentUser?._id);
+  console.log(results.data);
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-5">
       <div id="cuisines-list">

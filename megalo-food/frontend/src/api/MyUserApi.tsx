@@ -6,9 +6,13 @@ import { toast } from "sonner";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const useGetMyUser = () => {
-  const { getAccessTokenSilently } = useAuth0();
+  const { getAccessTokenSilently, isAuthenticated } = useAuth0();
 
   const getMyUserRequest = async (): Promise<User> => {
+    if (!isAuthenticated) {
+      throw new Error("No olvides iniciar sesión antes de comprar");
+    }
+
     const accessToken = await getAccessTokenSilently();
 
     const response = await fetch(`${API_BASE_URL}/api/my/user`, {
@@ -33,7 +37,8 @@ export const useGetMyUser = () => {
   } = useQuery("fetchCurrentUser", getMyUserRequest);
 
   if (error) {
-    toast.error(error.toString());
+    const err = error as Error;
+    toast.error(err.message);
   }
 
   return { currentUser, isLoading };
@@ -45,9 +50,13 @@ type CreateUserRequest = {
 };
 
 export const useCreateMyUser = () => {
-  const { getAccessTokenSilently } = useAuth0();
+  const { getAccessTokenSilently, isAuthenticated } = useAuth0();
 
   const createMyUserRequest = async (user: CreateUserRequest) => {
+    if (!isAuthenticated) {
+      throw new Error("No olvides iniciar sesión antes de comprar");
+    }
+
     const accessToken = await getAccessTokenSilently();
     const response = await fetch(`${API_BASE_URL}/api/my/user`, {
       method: "POST",
@@ -86,9 +95,13 @@ type UpdateMyUserRequest = {
 };
 
 export const useUpdateMyUser = () => {
-  const { getAccessTokenSilently } = useAuth0();
+  const { getAccessTokenSilently, isAuthenticated } = useAuth0();
 
   const updateMyUserRequest = async (formData: UpdateMyUserRequest) => {
+    if (!isAuthenticated) {
+      throw new Error("No olvides iniciar sesión antes de comprar");
+    }
+
     const accessToken = await getAccessTokenSilently();
 
     const response = await fetch(`${API_BASE_URL}/api/my/user`, {
@@ -120,7 +133,8 @@ export const useUpdateMyUser = () => {
   }
 
   if (error) {
-    toast.error(error.toString());
+    const err = error as Error;
+    toast.error(err.message);
     reset();
   }
 

@@ -1,6 +1,6 @@
 # MegaloFood 🍔🦈
 
-MegaloFood es un proyecto desarrollado para la materia de Ingeniería de Software I de la Universidad Nacional de Colombia durante el semestre 2024-1. Se centra en la creación de una página web de domicilios en línea, utilizando tecnologías modernas como React, TypeScript y MongoDV.
+MegaloFood es un proyecto desarrollado para la materia de Ingeniería de Software I de la Universidad Nacional de Colombia durante el semestre 2024-1. Su objetivo principal es simular una aplicación de delivery que ayude a pequeños negocios locales a ofrecer sus servicios de entrega en línea, con costos de comisión mucho más bajos que los de las grandes plataformas de delivery. Para su desarrollo, se emplearon tecnologías modernas como React, TypeScript, Node y MongoDB.
 
 ## Tecnologías Utilizadas
 
@@ -17,7 +17,6 @@ MegaloFood es un proyecto desarrollado para la materia de Ingeniería de Softwar
 - Gabriel Felipe Fonseca Guerrero
 - Manuel Nicolas Castiblanco Avendaño
 - Juan Manuel Torres Leon
-- Brandon Losada Socha
 
 ## Instalación
 
@@ -36,4 +35,8 @@ MegaloFood es un proyecto desarrollado para la materia de Ingeniería de Softwar
 3. Inicia el contenido de las dos carpetas anteriores con el siguiente comando (es necesario ejecutar este comando en ambas carpetas)
 
    ```bash
-   npm run dev 
+   npm run dev
+
+## Vista previa
+Si deseas ver un poco del Frontend del proyecto puedes acceder al siguiente link
+https://frontend-mern-ozpf.onrender.com/
